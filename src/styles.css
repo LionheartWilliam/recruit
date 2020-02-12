@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+body { margin: 0; font-family: "Noto Sans", "Noto Sans CJK JP", sans-serif; }
+
+app-root{
+    
+    padding: 10px;
+}
+app-private-registers-list{
+    padding: 0px 20px;
+}
+
+.icon-2x {
+    transform: scale(1.5);
+}
+
+.wrapper{
+    padding: 20px 70px;
+}
+#X2FormField .mat-form-field-infix {
+    width: 480px !important;
+}
+
+.mat-expansion-panel-content .mat-expansion-panel-body {
+
+    font-size: initial;
+    line-height: 1.8;
+}

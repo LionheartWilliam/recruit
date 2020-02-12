@@ -1,0 +1,41 @@
+<div fxLayout="row" fxLayoutAlign="space-between start" >
+    <mat-toolbar fxFlex  color="primary" >
+        <span fxFlex routerLink="/">澎湖縣國⺠小學暨附設幼兒園代理教師甄選報名</span >
+    
+            
+            <div fxFlex></div>   
+           <!-- User logged in -->
+          
+           <div fxFlex *ngIf="auth.user$ | async as user ; else guest">
+                <button mat-button routerLink="create-register" >
+                    <i class="material-icons icon-2x">post_add</i>
+                </button>
+                <button mat-button routerLink="private-list">
+                    <i class="material-icons icon-2x">account_circle</i>
+                </button>
+                <button mat-button  (click)="auth.signOut()">
+                    <i class="material-icons icon-2x">exit_to_app</i>
+                </button>
+                
+                
+                
+    
+            </div>
+    
+            <!-- User NOT logged in -->
+            <ng-template #guest>
+                <button mat-raised-button color="primary" (click)="auth.facebookSignin()">
+                    Facebook 登入
+                </button>
+                <button mat-raised-button color="primary" (click)="auth.googleSignin()">
+                    Google 登入
+                </button>
+            </ng-template>
+            
+    
+          
+        
+        
+    
+    </mat-toolbar>
+</div>

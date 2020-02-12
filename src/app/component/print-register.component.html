@@ -1,0 +1,137 @@
+<div fxLayout="row">
+    <div fxFlex style="text-align: center;margin-top: 20px;">
+        <button mat-flat-button color="Basic" class="printButton" printSectionId="print-section" [useExistingCss]="true" ngxPrint>列印報名表</button>
+    </div>
+</div>
+<div id="print-section" class="A4paper">
+    <div size="A4">
+        <div fxLayout="row" fxLayoutAlign="end start" >
+            <p class="document-id">文件編號 : {{registerDATA.id}}</p>
+        </div>
+        
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div fxFlex>
+                <h2 >澎湖縣108學年度國⺠⼩學暨附設幼兒園代理教師甄選報名表</h2>
+            </div>
+            <!--<div fxFlex>
+                <qrcode [qrdata]="angularxQrCode" [width]="96" [errorCorrectionLevel]="'M'"></qrcode>
+            </div>-->
+        </div>
+
+
+        <div fxLayout="row" fxLayoutAlign="space-between strech">
+            <div fxflex="30">
+                
+                <p>姓 名 : {{registerDATA.name}}</p>
+                <mat-divider></mat-divider>
+                <p>性別 : {{registerDATA.gender}}</p>
+                <mat-divider></mat-divider>
+                <p>出生日期 : {{registerDATA.birth.toDate() | date: 'yyyy-MM-dd'}}</p>
+                <mat-divider></mat-divider>
+                <p>身分證字號 : {{registerDATA.twid}}</p>
+                <mat-divider></mat-divider>
+                <p>電話 : {{registerDATA.phoneNumber}}</p>
+                <mat-divider></mat-divider>
+            </div>
+            <div fxflex="45">
+                <p> </p>
+                <p>報考類別 : {{registerDATA.rtype}}</p>
+                <mat-divider></mat-divider>
+                <p>最高學歷 : {{registerDATA.degree}}</p>
+                <mat-divider></mat-divider>
+                <p>畢業學校 : {{registerDATA.college}}</p>
+                <mat-divider></mat-divider>
+                <p>畢業系所 : {{registerDATA.major}}</p>
+                <mat-divider></mat-divider>
+                <p>師培機構 : {{registerDATA.teacherEducation}}</p>
+                <mat-divider></mat-divider>
+            </div>
+            <div fxflex="25" fxFlexAlign="center">
+                <div class="photoBlank">
+                    請貼最近3個月內2吋正面半身照片
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between strech">
+            <div fxflex="75" fxFlexAlign="center" >
+                <p>地址 : {{registerDATA.address}}</p>
+            </div>
+            <div fxFlex="25" fxFlexAlign="center">
+                <p>自填積分 : {{registerDATA.countyScore}}</p>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="row" class="section-margin" fxLayoutAlign="center center" fxLayoutGap="">
+            <div fxFlex="10" fxFlexAlign="center">
+                注意事項
+            </div>
+            <div fxFlex fxFlexAlign="end">
+                <ol>
+                    <li>請先填妥資料，並依序將各項資料裝訂成冊。</li>
+                    <li>有關證件以原始證件為準，驗畢發還，留影印本。</li>
+                    <li>請親自報名或委託報名，通訊報名不予受理。</li>
+                    <li>審核如有異議，請於報名期限內以書面及有關證件立即送審核人員複審，逾期不予受理。</li>
+                    <li>地址請填寫清楚，以利成績單郵寄。</li>
+                    <li>外國學歷證件須經教育主管單位完成驗證，否則不予承認。</li>
+                    <li>應考人若不符合規定被取消資格時，絕無異議。</li>
+                    <li>本人確未有教師法第14條第1項各款或教育人員任用條例第31條、第33條規定不得報考之情事，並依政府資訊公開法授權有關機關查證及依甄選簡章之規定辦理。</li>
+                    <li>已詳閱並同意注意事項列舉內容</li>
+                </ol>
+            </div>
+        </div>
+        <div  fxLayout="row-reverse" fxLayoutAlign="start start" fxLayoutGap="">
+            <h2 class="signature">簽 名 處：___________</h2>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div fxLayout="row"  class="section-margin" fxLayoutAlign="start start" fxLayoutGap="">
+            <div fxFlex="15" fxFlexAlign="center">
+               <p>報名繳驗證件</p>
+            </div>
+            <div fxFlex="25" fxFlexAlign="center">
+                <p class="check-list"> <span class="check-square">⃞ </span>  國民身分證影本</p>
+                <p class="check-list"> <span class="check-square">⃞ </span>  教師合格證影本</p>
+                <p class="check-list"> <span class="check-square">⃞ </span>  學歷證件影本</p>
+            </div>
+            <div fxFlex fxFlexAlign="center">
+                <p class="check-list"> <span class="check-square">⃞ </span>  108年度教師證資格檢定考試及格證明及切結書</p>
+                <p class="check-list"> <span class="check-square">⃞ </span>  國小及幼兒園之加分證明文件</p>
+                <p class="check-list"> <span class="check-square">⃞ </span>  其他證明應考資格之證件影本</p>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="row" class="section-margin" fxLayoutAlign="start strech" fxLayoutGap="">
+            <div class="audit-box" fxFlex="10" fxFlexAlign="end">
+                <p>審查結果</p>
+            </div>
+            <div class="audit-box" fxFlex fxFlexAlign="center">
+                <p class="check-list"> <span class="check-square">⃞ </span> 合格</p>
+                <p class="check-list"> <span class="check-square">⃞ </span> 不合格</p>
+            </div>
+            <div class="audit-box" fxFlex="10" fxFlexAlign="center">
+                <p>審查人員簽章</p>
+            </div>
+            <div class="audit-box" fxFlex fxFlexAlign="center">
+                
+            </div>
+            <div class="audit-box" fxFlex="10" fxFlexAlign="center">
+                <p>收費人員簽章</p>
+            </div>
+            <div class="audit-box" fxFlex fxFlexAlign="center">
+                
+            </div>
+            <div class="audit-box" fxFlex="10" fxFlexAlign="center">
+                <p>收件人員簽名</p>
+            </div>
+            <div class="audit-box" fxFlex fxFlexAlign="center">
+                
+            </div>
+            
+        </div>
+        <div fxLayout="row-reverse" fxLayoutAlign="start start" fxLayoutGap="">
+            <h2>審查委員簽章：___________</h2>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+    
+</div>

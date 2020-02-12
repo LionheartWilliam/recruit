@@ -1,0 +1,24 @@
+.private-list{
+
+    max-width: 1000px;
+}
+.mat-card-header .mat-card-title {
+    font-size: 16px;
+}
+
+
+mat-expansion-panel.mat-expansion-panel {
+    margin: 0px 20px;
+}
+.mat-card-subtitle{
+    margin-bottom: 8px;
+}
+.no-register-data{
+    justify-content: center;
+    font-size: medium;
+}
+.useravatar{
+    width: 96px;
+    height: auto;
+    border-radius: 10px;
+}

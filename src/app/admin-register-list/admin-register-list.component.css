@@ -1,0 +1,10 @@
+.admin-list{
+    margin: 10px 0px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0px;
+}
+
+.full-width{
+    width: 900px !important;
+    font-size: xx-large;
+}

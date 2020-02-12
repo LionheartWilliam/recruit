@@ -1,0 +1,58 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1">
+  <div fxFlex = "28" style="text-align: center" fxFlexAlign="center">
+    <img class="useravatar" src={{userPhoto}} alt=""/>
+    <p>Howdy, {{userName}}</p>
+  </div>
+
+  <div fxFlex = "68">
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            個人報名紀錄
+          </mat-panel-title>
+          <mat-panel-description>
+            
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <div class="private-list"  fxLayout="row wrap" fxLayoutGap="1" fxLayoutAlign="space-between stretch">
+          
+            <div fxFlex="98"  *ngFor="let register of registers | async">
+              <mat-card class="private-card"  fxLayout="row" fxLayoutAlign="space-between center">
+                  <mat-card-header fxFlex="65" >
+                    <mat-card-title >{{ register.data.rtype}}</mat-card-title>
+                    <mat-card-subtitle>{{ register.data.timeStamp.toDate() | date:'yyyy/MM/dd h:mm:ss a' }}</mat-card-subtitle>
+                  </mat-card-header>
+                  <!-- <mat-card-content></mat-card-content> -->
+                  <mat-card-actions fxFlex="35" fxLayout="row" fxLayoutAlign="end center" >
+                    <button mat-raised-button color="primary" fxFlex [routerLink]="['./print-register/', register.id]" (click)="sendRegisterDATA( register.data, register.id)"  >檢視</button>
+                    <button mat-raised-button color="primary" fxFlex [routerLink]="['/update-register/', register.id]" (click)="sendRegisterDATA( register.data, register.id)" >修改</button>
+                  </mat-card-actions>
+                </mat-card>
+            </div>
+    
+          
+          <!--<ng-template #noData>
+            <div  class="no-register-data-wrapper" >
+              <p class="no-register-data">還沒看到你的報名資料，快來<button mat-flat-button color="primary" routerLink="/create-register" >新增</button>一筆。</p>
+            </div>
+          </ng-template>-->
+              
+    
+          
+        </div>
+        
+    
+    
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
+
+
+
+
+
+<router-outlet ></router-outlet>

@@ -1,0 +1,36 @@
+<div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="px">
+    <div fxFlex fxFlexFill>
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="px">
+            <div fxFlex fxFlexFill style="text-align: center;">
+                <mat-form-field class="full-width">
+                    <mat-label>search</mat-label>
+                    <input matInput placeholder="Ex. Pizza" [(ngModel)]="term">
+                </mat-form-field>
+            </div>
+        </div>
+        
+       
+        <div fxLayout="row" class="admin-list" fxLayoutAlign="center center" fxLayoutGap="px" *ngFor="let register of registers | async | filter:term ">
+            <div fxFlex="25" fxFlexAlign="center" >
+                <button mat-raised-button color="primary" [routerLink]="['/admin-update-register/', register.id]" (click)="sendRegisterDATA( register.data, register.id)">{{ register.id}}</button> 
+            </div>
+            <div fxFlex="10" fxFlexAlign="center">
+                {{ register.data.name}}
+            </div>
+            <div fxFlex="25" fxFlexAlign="center">
+                {{ register.data.rtype}}
+            </div>
+            <div fxFlex fxFlexAlign="center">
+                {{ register.data.twid}}
+            </div>
+            <div fxFlex fxFlexAlign="center">
+                {{ register.data.birth.toDate() | date:'yyyy/MM/dd'}}
+            </div>
+            <div fxFlex fxFlexAlign="center">
+                {{ register.data.phoneNumber}}
+            </div>
+            
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,110 @@
+
+
+    <div class="form-wrapper">
+        <form [formGroup]="createForm" [hidden]="success" (ngSubmit)="createSubmitHandler()">
+            
+            <div  class="mat-primary title-box">
+                基本資料
+            </div>
+            <mat-form-field>
+                <input matInput placeholder="姓名" formControlName="name" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>性別</mat-label>
+                <mat-select formControlName="gender" required>
+                    <mat-option *ngFor="let Gender of Genders" [value]="Gender.value" >
+                    {{Gender.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [style.fontSize.px]=24 placeholder="身分證字號" formControlName="twid" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="出生日期" formControlName="birth" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            
+
+            <mat-form-field>
+                <input matInput placeholder="電話" formControlName="phoneNumber">
+            </mat-form-field>
+
+            <mat-form-field id="X2FormField">
+                <mat-hint >地址請填寫清楚，以利成績單郵寄。</mat-hint>
+                <input  class="" matInput placeholder="地址" formControlName="address">
+            </mat-form-field>
+
+            
+            <div  class="mat-primary title-box">
+                學歷背景
+            </div>
+
+            <mat-form-field>
+                <mat-label>最高學歷</mat-label>
+                <mat-select formControlName="degree">
+                    <mat-option *ngFor="let Degree of Degrees" [value]="Degree.value" >
+                    {{Degree.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="畢業學校" formControlName="college">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="畢業系所" formControlName="major">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="師培機構" formControlName="teacherEducation">
+            </mat-form-field>
+
+            
+            <div  class="mat-primary title-box">
+                報考內容
+            </div>
+            <mat-form-field>
+                <mat-label>報考類別</mat-label>
+                <mat-select formControlName="rtype" required>
+                    <mat-option *ngFor="let Rtype of Rtypes" [value]="Rtype.value" >
+                    {{Rtype.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field id="X2FormField">
+                <mat-hint>106 學年度(含)前曾服務於本縣各該教育階段(幼兒園教師含教保服務人員)滿 1 學年者(從第一學期開學日起至第二學期休業式止，且服務成績優良，未滿 1 學年者不予計分)，外加總分 0.5 分，最高以 4 分為限。</mat-hint>
+                <input matInput placeholder="縣內積分" formControlName="countyScore">
+            </mat-form-field>
+
+            <mat-divider class="margintop20"></mat-divider>
+
+            <div>
+                <ol>
+                    <li>請先填妥資料，並依序將各項資料裝訂成冊。</li>
+                    <li>有關證件以原始證件為準，驗畢發還，留影印本。</li>
+                    <li>請親自報名或委託報名，通訊報名不予受理。</li>
+                    <li>審核如有異議，請於報名期限內以書面及有關證件立即送審核人員複審，逾期不予受理。</li>
+                    <li>外國學歷證件須經教育主管單位完成驗證，否則不予承認。</li>
+                    <li>應考人若不符合規定被取消資格時，絕無異議。</li>
+                    <li>本人確未有教師法第14條第1項各款或教育人員任用條例第31條、第33條規定不得報考之情事，並依政府資訊公開法授權有關機關查證及依甄選簡章之規定辦理。</li>
+                </ol>
+            </div>
+
+            <button mat-raised-button color="primary" [disabled]="createForm.invalid">送出報名表</button>
+        </form>
+        <div *ngIf="success">
+            <i class="material-icons icon-2x" color="primary">done_outline</i>
+            <span>成功新增一筆報名資料。</span>
+        </div>
+
+    </div>
+
+        

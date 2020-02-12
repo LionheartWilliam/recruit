@@ -1,0 +1,52 @@
+.A4paper{
+    background: white;
+    width: 21cm;
+    height: 29.7cm;
+    display: block;
+    margin: 30px auto;
+    padding: 2cm 2.5cm;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+
+
+  @media print {
+    body, page[size="A4"] {
+      margin: 1cm;
+      box-shadow: 0;
+    }
+  }
+  .photoBlank{
+    width: 3.2cm;
+    height: 4.5cm;
+    border: solid 1px gray;
+    padding: 12px;
+
+  }
+  .printButton,
+  .section-title{
+    background: #3f51b5;
+    color: white;
+    font-size: medium;
+    width: 21cm;
+  }
+span.check-square {
+    font-size: x-large;
+}
+p.check-list {
+  margin: 0px;
+}
+.audit-box{
+  border: 1px solid #ccc;
+    height: 80px;
+}
+.section-margin{
+  margin: 10px 0px;
+}
+.document-id,
+.signature,
+.section-title{
+  margin: 0px;
+}
+li {
+  margin-bottom: 5px;
+}
