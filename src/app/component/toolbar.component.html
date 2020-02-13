@@ -5,8 +5,13 @@
             
             <div fxFlex></div>   
            <!-- User logged in -->
-          
+           <div fxFlex *ngIf="auth.user$ | async as user">
+            
+           </div>
            <div fxFlex *ngIf="auth.user$ | async as user ; else guest">
+                <button mat-button *ngIf="user.role === 'admin'" routerLink="admin-register-list" >
+                    <i class="material-icons icon-2x">vertical_split</i>
+                </button>
                 <button mat-button routerLink="create-register" >
                     <i class="material-icons icon-2x">post_add</i>
                 </button>
@@ -16,10 +21,6 @@
                 <button mat-button  (click)="auth.signOut()">
                     <i class="material-icons icon-2x">exit_to_app</i>
                 </button>
-                
-                
-                
-    
             </div>
     
             <!-- User NOT logged in -->
