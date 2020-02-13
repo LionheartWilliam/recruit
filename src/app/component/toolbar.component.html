@@ -5,9 +5,7 @@
             
             <div fxFlex></div>   
            <!-- User logged in -->
-           <div fxFlex *ngIf="auth.user$ | async as user">
-            
-           </div>
+           
            <div fxFlex *ngIf="auth.user$ | async as user ; else guest">
                 <button mat-button *ngIf="user.role === 'admin'" routerLink="admin-register-list" >
                     <i class="material-icons icon-2x">vertical_split</i>
