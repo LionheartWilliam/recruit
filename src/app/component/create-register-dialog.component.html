@@ -7,7 +7,7 @@
                 基本資料
             </div>
             <mat-form-field>
-                <input matInput placeholder="姓名" formControlName="name" required>
+                <input matInput placeholder="姓名" formControlName="name" [rangeLength]="[2, 10]" required>
             </mat-form-field>
 
             <mat-form-field>
@@ -20,11 +20,11 @@
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput [style.fontSize.px]=24 placeholder="身分證字號" formControlName="twid" required>
+                <input matInput [style.fontSize.px]=24 placeholder="身分證字號" formControlName="twid"  ng-pattern="/[a-zA-Z][0-9]{9}/" [rangeLength]="[10, 10]" required>
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="出生日期" formControlName="birth" required>
+                <input matInput [matDatepicker]="picker" placeholder="出生日期" formControlName="birth" minDate="1950-01-01" maxDate="2005-01-01" required>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -32,12 +32,12 @@
             
 
             <mat-form-field>
-                <input matInput placeholder="電話" formControlName="phoneNumber">
+                <input matInput placeholder="電話" formControlName="phoneNumber"  phone="TW" [rangeLength]="[7, 10]">
             </mat-form-field>
 
             <mat-form-field id="X2FormField">
                 <mat-hint >地址請填寫清楚，以利成績單郵寄。</mat-hint>
-                <input  class="" matInput placeholder="地址" formControlName="address">
+                <input  class="" matInput placeholder="地址" formControlName="address" [rangeLength]="[6, 30]">
             </mat-form-field>
 
             
@@ -55,15 +55,15 @@
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput placeholder="畢業學校" formControlName="college">
+                <input matInput placeholder="畢業學校" formControlName="college" [rangeLength]="[2, 15]">
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput placeholder="畢業系所" formControlName="major">
+                <input matInput placeholder="畢業系所" formControlName="major" [rangeLength]="[2, 15]">
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput placeholder="師培機構" formControlName="teacherEducation">
+                <input matInput placeholder="師培機構" formControlName="teacherEducation" [rangeLength]="[2, 15]">
             </mat-form-field>
 
             
@@ -81,7 +81,7 @@
 
             <mat-form-field id="X2FormField">
                 <mat-hint>106 學年度(含)前曾服務於本縣各該教育階段(幼兒園教師含教保服務人員)滿 1 學年者(從第一學期開學日起至第二學期休業式止，且服務成績優良，未滿 1 學年者不予計分)，外加總分 0.5 分，最高以 4 分為限。</mat-hint>
-                <input matInput placeholder="縣內積分" formControlName="countyScore">
+                <input matInput placeholder="縣內積分" formControlName="countyScore" [range]="[0, 4]">
             </mat-form-field>
 
             <mat-divider class="margintop20"></mat-divider>

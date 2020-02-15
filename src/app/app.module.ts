@@ -35,6 +35,7 @@ import { HomeComponent } from './component/home.component';
 import { RegisterListModule } from './register-list/register-list.module'
 
 //additional
+import { CustomFormsModule } from 'ng2-validation'
 import { NgxPrintModule } from 'ngx-print';
 import { QRCodeModule } from 'angularx-qrcode';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -76,7 +77,7 @@ const routes: Routes = [
     BrowserModule,MatDividerModule,
     FormsModule,ReactiveFormsModule,
     MatCardModule,FlexLayoutModule,
-    RegisterListModule,NgxPrintModule,QRCodeModule,Ng2SearchPipeModule,
+    RegisterListModule,NgxPrintModule,QRCodeModule,Ng2SearchPipeModule,CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, AngularFireAuthModule, BrowserAnimationsModule, LayoutModule, MatExpansionModule,
     MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule,MatSnackBarModule, MatTableModule , MatSlideToggleModule, MatCheckboxModule,
