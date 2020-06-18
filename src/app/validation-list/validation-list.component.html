@@ -1,64 +1,76 @@
 <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="px">
     <div fxFlex fxFlexFill>
                
-        <table mat-table [dataSource]="dataSource" >
+        <table mat-table  matSort [dataSource]="dataSource"  class="data-table">
 
-            
+          <ng-container matColumnDef="serialNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> 序號 </th>
+            <td mat-cell *matCellDef="let register"> {{register.serialNumber | number:'4.'}} </td>
+          </ng-container>
+
             <ng-container matColumnDef="rtype">
-              <th mat-header-cell *matHeaderCellDef> 報考類別 </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 報考類別 </th>
               <td mat-cell *matCellDef="let register"> {{register.rtype}} </td>
             </ng-container>
           
-            
+            <ng-container matColumnDef="countyScore">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 縣內積分 </th>
+              <td mat-cell *matCellDef="let register"> {{register.countyScore}} </td>
+            </ng-container>
+            <ng-container matColumnDef="proxyRank">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 代理順位 </th>
+              <td mat-cell *matCellDef="let register"> {{register.proxyRank}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> 姓名 </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 姓名 </th>
               <td mat-cell *matCellDef="let register"> {{register.name}} </td>
             </ng-container>
           
             
             <ng-container matColumnDef="twid">
-              <th mat-header-cell *matHeaderCellDef> 身分證字號 </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 身分證字號 </th>
               <td mat-cell *matCellDef="let register"> {{register.twid}} </td>
             </ng-container>
           
             
             <ng-container matColumnDef="birth">
-              <th mat-header-cell *matHeaderCellDef> 出生日期 </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> 出生日期 </th>
               <td mat-cell *matCellDef="let register"> {{register.birth.toDate() | date:'yyyy/MM/dd'}} </td>
             </ng-container>
             
             <ng-container matColumnDef="gender">
-                <th mat-header-cell *matHeaderCellDef> 性別 </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> 性別 </th>
                 <td mat-cell *matCellDef="let register"> {{register.gender}} </td>
               </ng-container>
 
               <ng-container matColumnDef="phoneNumber">
-                <th mat-header-cell *matHeaderCellDef> 電話 </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> 電話 </th>
                 <td mat-cell *matCellDef="let register"> {{register.phoneNumber}} </td>
               </ng-container>
 
               <ng-container matColumnDef="address">
-                <th mat-header-cell *matHeaderCellDef> 地址 </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> 地址 </th>
                 <td mat-cell *matCellDef="let register"> {{register.address}} </td>
               </ng-container>
 
               <ng-container matColumnDef="degree">
-                <th mat-header-cell *matHeaderCellDef> 教育程度 </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> 教育程度 </th>
                 <td mat-cell *matCellDef="let register"> {{register.degree}} </td>
               </ng-container>
 
               <ng-container matColumnDef="college">
-                <th mat-header-cell *matHeaderCellDef> 畢業學校 </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> 畢業學校 </th>
                 <td mat-cell *matCellDef="let register"> {{register.college}} </td>
               </ng-container>
 
               <ng-container matColumnDef="major">
-                <th mat-header-cell *matHeaderCellDef> 畢業系所 </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> 畢業系所 </th>
                 <td mat-cell *matCellDef="let register"> {{register.major}} </td>
               </ng-container>
 
               <ng-container matColumnDef="teacherEducation">
-                <th mat-header-cell *matHeaderCellDef> 師培機構 </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> 師培機構 </th>
                 <td mat-cell *matCellDef="let register"> {{register.teacherEducation}} </td>
               </ng-container>
           
@@ -67,7 +79,11 @@
           </table>
             
 
-
+          <div *ngIf="noData | async" class="no-records">
+            目前沒有報名資料
+        </div>
+        <mat-paginator [pageSize]="100" 
+        [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
        
         
     </div>

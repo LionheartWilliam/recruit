@@ -5,6 +5,30 @@
         <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="gappx">
             <div fxFlex fxFlexAlign="center" style="text-align: center;">
                 <mat-slide-toggle formControlName="validationStatus"  [attr.disabled]="true">審查狀態</mat-slide-toggle>
+                
+            </div>
+            <div fxFlex fxFlexAlign="center">
+                <mat-form-field *ngIf="
+                updateForm.value.rtype == '4-一般代理教師' ||
+                updateForm.value.rtype == '6-專任輔導代理教師' ||
+                updateForm.value.rtype == '5-英語專長代理教師' ||
+                updateForm.value.rtype == '7-特殊教育-身心障礙類代理教師' ||
+                updateForm.value.rtype == '8-幼兒園代理教師' 
+                ">
+                    <mat-label>代理順位</mat-label>
+                    <mat-select formControlName="proxyRank" >
+                        <mat-option *ngFor="let ProxyRank of ProxyRanks" [value]="ProxyRank.value" >
+                        {{ProxyRank.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="
+                updateForm.value.rtype == '1-國小一般教師' ||
+                updateForm.value.rtype == '2-國小英語專長教師' ||
+                updateForm.value.rtype == '3-國小舞蹈專長教師(藝才班)' 
+                ">
+                    <input matInput placeholder="縣內積分" formControlName="countyScore">
+                </mat-form-field>
             </div>
             <div fxFlex fxFlexAlign="center">
                 <button mat-raised-button color="primary" [disabled]="updateForm.invalid">送出報名表</button>
@@ -41,12 +65,12 @@
         
 
         <mat-form-field>
-            <input matInput placeholder="電話" formControlName="phoneNumber">
+            <input matInput placeholder="手機" formControlName="phoneNumber"  phone="TW" [rangeLength]="[7, 10]" required>
         </mat-form-field>
 
         <mat-form-field id="X2FormField">
             <mat-hint >地址請填寫清楚，以利成績單郵寄。</mat-hint>
-            <input  class="" matInput placeholder="地址" formControlName="address">
+            <input  class="" matInput placeholder="通訊地址" formControlName="address" [rangeLength]="[6, 30]" required>
         </mat-form-field>
 
         
@@ -88,10 +112,9 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field id="X2FormField">
-            <mat-hint>106 學年度(含)前曾服務於本縣各該教育階段(幼兒園教師含教保服務人員)滿 1 學年者(從第一學期開學日起至第二學期休業式止，且服務成績優良，未滿 1 學年者不予計分)，外加總分 0.5 分，最高以 4 分為限。</mat-hint>
-            <input matInput placeholder="縣內積分" formControlName="countyScore">
-        </mat-form-field>
+        
+
+        
 
         <mat-divider class="margintop20"></mat-divider>
 

@@ -11,15 +11,17 @@
         
        
         <div fxLayout="row" class="admin-list" fxLayoutAlign="center center" fxLayoutGap="px" *ngFor="let register of registers | async | filter:term ">
-            <div fxFlex="25" fxFlexAlign="center" >
-                <button mat-raised-button color="primary" [routerLink]="['/admin-update-register/', register.id]" (click)="sendRegisterDATA( register.data, register.id)">{{ register.id}}</button> 
-            </div>
-            <div fxFlex="10" fxFlexAlign="center">
-                {{ register.data.name}}
+            
+            <div fxFlex="5" fxFlexAlign="center">
+                {{ register.data.serialNumber | number:'4.'}}
             </div>
             <div fxFlex="25" fxFlexAlign="center">
                 {{ register.data.rtype}}
             </div>
+            <div fxFlex="10" fxFlexAlign="center">
+                {{ register.data.name}}
+            </div>
+            
             <div fxFlex fxFlexAlign="center">
                 {{ register.data.twid}}
             </div>
@@ -29,7 +31,14 @@
             <div fxFlex fxFlexAlign="center">
                 {{ register.data.phoneNumber}}
             </div>
-            
+            <div fxFlex="22" fxFlexAlign="center" >
+                <button mat-raised-button color="primary" [routerLink]="['/admin-update-register/', register.id]" (click)="sendRegisterDATA( register.data, register.id)">
+                    {{ register.id}} 
+                    <!-- <span class="material-icons">
+                        create
+                    </span> -->
+                </button> 
+            </div>
         </div>
         
     </div>

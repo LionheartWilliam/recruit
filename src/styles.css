@@ -28,3 +28,6 @@ app-private-registers-list{
     font-size: initial;
     line-height: 1.8;
 }
+html, body {
+    font-family: 'Noto Sans TC';
+}

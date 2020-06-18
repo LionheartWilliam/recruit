@@ -33,7 +33,7 @@ export class AdminRegisterListComponent implements OnInit {
     this.afAuth.authState.subscribe( user => {
       if (user.uid == "f2OnMqoRv6huk473RkZiHMWixyH2" || user.uid =="RR9AzBpKyEfHnoopCb2Du9clVyk1") { 
  
-        this.registerCollection = this.afs.collection<Register>('registers');
+        this.registerCollection = this.afs.collection<Register>('registers', ref => ref.where('validationStatus', '==', false).orderBy('serialNumber'));
         this.registers = this.registerCollection.snapshotChanges().pipe(
           map( action => action.map( a=>{
             const data = a.payload.doc.data() as Register;

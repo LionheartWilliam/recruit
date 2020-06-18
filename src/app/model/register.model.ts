@@ -16,4 +16,6 @@ export interface Register{
     countyScore:number;
     validationStatus:boolean;
     timeStamp:number;
+    serialNumber:number;
+    proxyRank:string;
 }

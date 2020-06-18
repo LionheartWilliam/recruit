@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="space-between start" >
     <mat-toolbar fxFlex  color="primary" >
-        <span fxFlex routerLink="/">澎湖縣國⺠小學暨附設幼兒園代理教師甄選報名</span >
+        <span fxFlex routerLink="/">澎湖縣109學年度國⺠小學暨附設幼兒園候用(代理)教師甄選報名</span >
     
             
             <div fxFlex></div>   
@@ -13,9 +13,12 @@
                 <button mat-button *ngIf="user.role === 'admin'" routerLink="admin-register-list" >
                     <i class="material-icons icon-2x">vertical_split</i>
                 </button>
-                <button mat-button routerLink="create-register" >
-                    <i class="material-icons icon-2x">post_add</i>
-                </button>
+                <!-- *ngIf=" currentDate.getTime() > startDate.getTime() " -->
+                    <!-- <button  mat-button routerLink="create-register" >
+                        <i class="material-icons icon-2x">post_add</i>
+                    </button> -->
+                
+                
                 <button mat-button routerLink="private-list">
                     <i class="material-icons icon-2x">account_circle</i>
                 </button>

@@ -5,22 +5,18 @@
 </div>
 <div id="print-section" class="A4paper">
     <div size="A4">
-        <div fxLayout="row" fxLayoutAlign="end start" >
-            <p class="document-id">文件編號 : {{registerDATA.id}}</p>
-        </div>
+        
         
         <div fxLayout="row" fxLayoutAlign="start center">
             <div fxFlex>
-                <h2 >澎湖縣108學年度國⺠⼩學暨附設幼兒園代理教師甄選報名表</h2>
+                <h2 >澎湖縣109學年度國⺠⼩學暨附設幼兒園候用(代理)教師甄選報名表</h2>
             </div>
-            <!--<div fxFlex>
-                <qrcode [qrdata]="angularxQrCode" [width]="96" [errorCorrectionLevel]="'M'"></qrcode>
-            </div>-->
+            
         </div>
 
 
         <div fxLayout="row" fxLayoutAlign="space-between strech">
-            <div fxflex="30">
+            <div fxflex="30" class="personal-data">
                 
                 <p>姓 名 : {{registerDATA.name}}</p>
                 <mat-divider></mat-divider>
@@ -33,7 +29,7 @@
                 <p>電話 : {{registerDATA.phoneNumber}}</p>
                 <mat-divider></mat-divider>
             </div>
-            <div fxflex="45">
+            <div fxflex="45"  class="personal-data">
                 <p> </p>
                 <p>報考類別 : {{registerDATA.rtype}}</p>
                 <mat-divider></mat-divider>
@@ -52,13 +48,25 @@
                 </div>
             </div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="space-between strech">
-            <div fxflex="75" fxFlexAlign="center" >
+        <div fxLayout="row" fxLayoutAlign="space-around strech">
+            <div  fxFlex="55" fxFlexAlign="start"  class="personal-data">
                 <p>地址 : {{registerDATA.address}}</p>
             </div>
-            <div fxFlex="25" fxFlexAlign="center">
-                <p>自填積分 : {{registerDATA.countyScore}}</p>
+            <div fxFlex="40" fxFlexAlign="start" >
+                <p *ngIf="
+                registerDATA.rtype == '4-一般代理教師' ||
+                registerDATA.rtype == '6-專任輔導代理教師' ||
+                registerDATA.rtype == '5-英語專長代理教師' ||
+                registerDATA.rtype == '7-特殊教育-身心障礙類代理教師' ||
+                registerDATA.rtype == '8-幼兒園代理教師' 
+                ">代理順位：____ </p>
+                <p *ngIf="
+                    registerDATA.rtype == '1-國小一般教師' ||
+                    registerDATA.rtype == '2-國小英語專長教師' ||
+                    registerDATA.rtype == '3-國小舞蹈專長教師(藝才班)' 
+                ">自填積分 : {{registerDATA.countyScore}} &nbsp;&nbsp;&nbsp; 積分覆核：____ </p>
             </div>
+            
         </div>
         <mat-divider></mat-divider>
         <div fxLayout="row" class="section-margin" fxLayoutAlign="center center" fxLayoutGap="">
@@ -88,13 +96,13 @@
             <div fxFlex="15" fxFlexAlign="center">
                <p>報名繳驗證件</p>
             </div>
-            <div fxFlex="25" fxFlexAlign="center">
+            <div fxFlex="25" fxFlexAlign="center" class="validation-section">
                 <p class="check-list"> <span class="check-square">⃞ </span>  國民身分證影本</p>
                 <p class="check-list"> <span class="check-square">⃞ </span>  教師合格證影本</p>
                 <p class="check-list"> <span class="check-square">⃞ </span>  學歷證件影本</p>
             </div>
-            <div fxFlex fxFlexAlign="center">
-                <p class="check-list"> <span class="check-square">⃞ </span>  108年度教師證資格檢定考試及格證明及切結書</p>
+            <div fxFlex fxFlexAlign="center" class="validation-section">
+                <p class="check-list"> <span class="check-square">⃞ </span>  109年度教師證資格檢定考試及格證明及切結書</p>
                 <p class="check-list"> <span class="check-square">⃞ </span>  國小及幼兒園之加分證明文件</p>
                 <p class="check-list"> <span class="check-square">⃞ </span>  其他證明應考資格之證件影本</p>
             </div>
@@ -133,5 +141,8 @@
         </div>
         <mat-divider></mat-divider>
     </div>
-    
+    <div fxLayout="row" fxLayoutAlign="space-between end" >
+        <p class="document-id"> 報名序號 : {{registerDATA.serialNumber | number:'4.'}}</p>
+        <p class="document-id">文件編號 : {{registerDATA.id}}</p>
+    </div>
 </div>

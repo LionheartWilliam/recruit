@@ -33,6 +33,11 @@ import { PrintRegisterComponent } from './component/print-register.component'
 import { NotFoundComponent } from './component/not-found.component';
 import { HomeComponent } from './component/home.component';
 import { RegisterListModule } from './register-list/register-list.module'
+// Data table
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
+
 
 //additional
 import { CustomFormsModule } from 'ng2-validation'
@@ -81,7 +86,7 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, AngularFireAuthModule, BrowserAnimationsModule, LayoutModule, MatExpansionModule,
     MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatDialogModule, MatInputModule,MatSnackBarModule, MatTableModule , MatSlideToggleModule, MatCheckboxModule,
-    MatRippleModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule,
+    MatRippleModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, MatPaginatorModule, MatSortModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

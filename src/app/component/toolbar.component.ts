@@ -15,14 +15,21 @@ export class ToolbarComponent implements OnInit {
 
   ) { }
 
+    currentDate: Date = new Date();
+    
+    startDate = new Date(2020,5,24);
+    endDate = new Date(2020,6,1);
+
   ngOnInit() {
+    //console.log(this.currentDate)
+    //console.log(this.startDate)
+    //console.log(this.endDate)
   }
 
-  //openCreateDialog(): void {
-    //this.router.navigate(['create-register']);
-    //const dialogRef = this.dialog.open(RegisterCreateDialogComponent, { width: '940px'});
-    //dialogRef.afterClosed().subscribe(result => {
-    //  console.log('The Delete dialog was closed');
-    //});
-  //}
+  
+
+  
+  
+    
+
 }

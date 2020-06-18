@@ -17,20 +17,24 @@
         </mat-expansion-panel-header>
     
         <div class="private-list"  fxLayout="row wrap" fxLayoutGap="1" fxLayoutAlign="space-between stretch">
-          
-            <div fxFlex="98"  *ngFor="let register of registers | async">
-              <mat-card class="private-card"  fxLayout="row" fxLayoutAlign="space-between center">
-                  <mat-card-header fxFlex="65" >
-                    <mat-card-title >{{ register.data.rtype}}</mat-card-title>
-                    <mat-card-subtitle>{{ register.data.timeStamp.toDate() | date:'yyyy/MM/dd h:mm:ss a' }}</mat-card-subtitle>
-                  </mat-card-header>
-                  <!-- <mat-card-content></mat-card-content> -->
-                  <mat-card-actions fxFlex="35" fxLayout="row" fxLayoutAlign="end center" >
-                    <button mat-raised-button color="primary" fxFlex [routerLink]="['./print-register/', register.id]" (click)="sendRegisterDATA( register.data, register.id)"  >檢視</button>
-                    <button mat-raised-button color="primary" fxFlex [routerLink]="['/update-register/', register.id]" (click)="sendRegisterDATA( register.data, register.id)" >修改</button>
-                  </mat-card-actions>
-                </mat-card>
+            
+              <div fxFlex="98"  *ngFor="let register of registers | async">
+                <!-- *ngIf=" currentDate.getTime() > startDate.getTime()" -->
+                <div > 
+                <mat-card class="private-card"  fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-card-header fxFlex="65" >
+                      <mat-card-title >{{ register.data.rtype}}</mat-card-title>
+                      <mat-card-subtitle>{{ register.data.timeStamp.toDate() | date:'yyyy/MM/dd h:mm:ss a' }}</mat-card-subtitle>
+                    </mat-card-header>
+                    <!-- <mat-card-content></mat-card-content> -->
+                    <mat-card-actions fxFlex="35" fxLayout="row" fxLayoutAlign="end center" >
+                      <button mat-raised-button color="primary" fxFlex [routerLink]="['./print-register/', register.id]" (click)="sendRegisterDATA( register.data, register.id)"  >檢視</button>
+                      <button *ngIf="register.data.validationStatus !== true" mat-raised-button color="primary" fxFlex [routerLink]="['/update-register/', register.id]" (click)="sendRegisterDATA( register.data, register.id)" >修改</button>
+                    </mat-card-actions>
+                  </mat-card>
+              </div>
             </div>
+            
     
           
           <!--<ng-template #noData>

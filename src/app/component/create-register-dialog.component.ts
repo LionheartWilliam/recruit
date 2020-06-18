@@ -21,16 +21,17 @@ export class RegisterCreateDialogComponent implements OnInit {
   private registerCollection : AngularFirestoreCollection<Register>;
   registers: Observable<Register[]>;
   snackBarMessage:string;
-
+  documentAmountAddOne: number;
 
   Rtypes: SelectValue[] = [
-    { value: '一般候用教師', viewValue: '一般候用教師' },
-    { value: '一般代理教師', viewValue: '一般代理教師' },
-    { value: '英語專長代理教師', viewValue: '英語專長代理教師' },
-    { value: '特殊教育身心障礙類代理教師', viewValue: '特殊教育身心障礙類代理教師' },
-    { value: '專任輔導教師', viewValue: '專任輔導教師' },
-    { value: '幼兒園候用教師', viewValue: '幼兒園候用教師' },
-    { value: '幼兒園代理教師', viewValue: '幼兒園代理教師' },
+    { value: '1-國小一般教師', viewValue: '1-國小一般教師' },
+    { value: '2-國小英語專長教師', viewValue: '2-國小英語專長教師' },
+    { value: '3-國小舞蹈專長教師(藝才班)', viewValue: '3-國小舞蹈專長教師(藝才班)' },
+    { value: '4-一般代理教師', viewValue: '4-一般代理教師' },
+    { value: '5-英語專長代理教師', viewValue: '5-英語專長代理教師' },    
+    { value: '6-專任輔導代理教師', viewValue: '6-專任輔導代理教師' },
+    { value: '7-特殊教育-身心障礙類代理教師', viewValue: '7-特殊教育-身心障礙類代理教師' },
+    { value: '8-幼兒園代理教師', viewValue: '8-幼兒園代理教師' },
   ];
 
   Genders: SelectValue[]=[
@@ -48,24 +49,34 @@ export class RegisterCreateDialogComponent implements OnInit {
     { value: '小學', viewValue: '小學' },
   ];
   
+  ProxyRanks: SelectValue[] = [
+    { value: '1', viewValue: '1' },
+    { value: '2', viewValue: '2' },
+    { value: '3', viewValue: '3' },
+    
+  ];
+  
+  
 
   constructor(
     
     private afs:AngularFirestore,
-    private fb: FormBuilder,
     public afa: AngularFireAuth,
     private snackBarService: SnackBarService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {
     this.registerCollection = this.afs.collection<Register>('registers');
-    this.registers = this.registerCollection.valueChanges();
-    
+    this.registers = this.registerCollection.valueChanges();  
+    this.registers.subscribe( data=>{
+      this.documentAmountAddOne = data.length + 1 ;
+    });
    }
 
   ngOnInit(): void{
     const currentUserId = this.afa.auth.currentUser.uid;
     let createTime: Date = new Date();  
-    //console.log("Date = " + createTime);   
+    
     this.createForm = this.fb.group({
       uid: currentUserId,
       rtype:'',
@@ -79,17 +90,22 @@ export class RegisterCreateDialogComponent implements OnInit {
       college:'',
       major:'',
       teacherEducation:'',
-      countyScore:'0',
+      countyScore:0,
       validationStatus:false,
       timeStamp:createTime,
+      proxyRank:'',
+      serialNumber:0,
     })
-    //this.createForm.valueChanges.subscribe(console.log);
+    
     
   }
   
 
   async createSubmitHandler () {
     this.loading = true;
+    this.createForm.patchValue({serialNumber: this.documentAmountAddOne});
+    //console.log(this.createForm.value)
+
     const formValue = this.createForm.value;
     try {
       await this.registerCollection.add(formValue);

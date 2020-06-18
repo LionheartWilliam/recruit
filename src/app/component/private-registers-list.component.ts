@@ -27,6 +27,9 @@ export class PrivateRegistersListComponent implements OnInit {
   userPhoto:string;
   docid: string;
 
+  currentDate: Date = new Date();
+  startDate = new Date(2020,5,24);
+
   constructor(
     private afs:AngularFirestore,
     private transferData: DocIDService,

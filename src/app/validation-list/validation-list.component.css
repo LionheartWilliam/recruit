@@ -3,3 +3,37 @@
     border-bottom: 1px solid #ccc;
     padding: 10px 0px;
 }
+
+
+
+.form-block-title,
+.mat-table ,
+.mat-paginator,
+.no-records
+{
+    font-family: 'Noto Sans TC' !important; 
+}
+
+.form-block-title{
+    border-radius: 10px;
+    padding-left: 30px;
+    width: 95%;
+    height: 45px;
+    font-size: medium;
+    margin-bottom: 20px;
+
+}
+
+
+.data-table{
+    width: 95%;
+    padding: 5px;
+}
+
+.no-records {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
